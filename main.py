@@ -19,6 +19,8 @@ class MainWindow(QMainWindow):
 
         # Add Input Area Widget
         self.input_area = QLineEdit(self)
+        self.input_area.setPlaceholderText("Enter your text...")
+        self.input_area.returnPressed.connect(self.start_conversation)
         self.input_area.setGeometry(10, 340, 480, 40)
 
         # Add Send Button Widget
@@ -33,6 +35,7 @@ class MainWindow(QMainWindow):
         user_input = self.input_area.text().strip()
         self.chat_area.append(f"<p> <font size='4'><b> Me: </b> {user_input} </font> </p>")
         self.input_area.clear()
+        self.input_area.setReadOnly(True)
 
         thread = threading.Thread(target=self.get_response, args=(user_input, ))
         thread.start()
@@ -40,6 +43,7 @@ class MainWindow(QMainWindow):
     def get_response(self, user_input):
         response = self.bot.get_response(user_input)
         self.chat_area.append(f"<p> <font size='4'> <b> Bot: </b> {response} </font> </p>")
+        self.input_area.setReadOnly(False)
 
 
 if __name__ == "__main__":
