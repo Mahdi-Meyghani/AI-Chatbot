@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QMainWindow, QApplication
+from PyQt6.QtWidgets import QMainWindow, QApplication, QTextEdit, QLineEdit, QPushButton
 import sys
 
 
@@ -7,6 +7,15 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("Your Personal ChatBot")
         self.setMinimumSize(700, 500)
+
+        # Add Chat Area Widget
+        self.chat_area = QTextEdit(self)
+
+        # Add Input Area Widget
+        self.input_area = QLineEdit(self)
+
+        # Add Send Button Widget
+        self.send_button = QPushButton("Send", self)
 
         self.show()
 
