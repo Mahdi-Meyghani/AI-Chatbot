@@ -10,6 +10,7 @@ class MainWindow(QMainWindow):
 
         # Add Chat Area Widget
         self.chat_area = QTextEdit(self)
+        self.chat_area.setReadOnly(True)
         self.chat_area.setGeometry(10, 10, 480, 320)
 
         # Add Input Area Widget
