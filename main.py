@@ -20,9 +20,15 @@ class MainWindow(QMainWindow):
         # Add Send Button Widget
         self.send_button = QPushButton("Send", self)
         self.send_button.setStyleSheet("background-color: #00337C; color: white;")
+        self.send_button.clicked.connect(self.start_conversation)
         self.send_button.setGeometry(500, 340, 100, 40)
 
         self.show()
+
+    def start_conversation(self):
+        user_input = self.input_area.text().strip()
+        self.chat_area.append(f"<p> <font size='4'><b> Me: </b> {user_input} </font> </p>")
+        self.input_area.clear()
 
 
 if __name__ == "__main__":
