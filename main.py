@@ -25,10 +25,6 @@ class MainWindow(QMainWindow):
         self.show()
 
 
-class ChatBot:
-    pass
-
-
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setStyle("Fusion")
