@@ -1,5 +1,6 @@
 from PyQt6.QtWidgets import QMainWindow, QApplication, QTextEdit, QLineEdit, QPushButton
 import sys
+from backend import ChatBot
 
 
 class MainWindow(QMainWindow):
@@ -29,6 +30,11 @@ class MainWindow(QMainWindow):
         user_input = self.input_area.text().strip()
         self.chat_area.append(f"<p> <font size='4'><b> Me: </b> {user_input} </font> </p>")
         self.input_area.clear()
+
+        bot = ChatBot()
+        response = bot.get_response(user_input)
+
+        self.chat_area.append(f"<p> <font size='4'> <b> Bot: </b> {response} </font> </p>")
 
 
 if __name__ == "__main__":
